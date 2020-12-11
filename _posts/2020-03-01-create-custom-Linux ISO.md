@@ -48,6 +48,9 @@ We now enter a terminal where we do the "customization" of our ISO. We are prese
 
  (It's best to save these actions as a script in a [gist](https://gist.github.com/)) in case you need to recreate the ISO.
 
+### Install latest OS updates 
+`sudo apt update && sudo apt upgrade`
+
 ### Create a Bootstrap script
 
 First, create a bootstrap script named say `my-boot.sh` in `/usr/local/bin` with 755 permission). This is to be run manually (or on startup of the ISO) to do the following:
@@ -71,17 +74,16 @@ The last line calls an externally hosted script (on boot.example.com) that runs 
 
 The ISO image can be customized 	with additional settings that needn't be in the bootstrap script (things that take time to setup, such as installing Chrome, VPN clients etc.)
 
-### Install latest OS updates 
-`sudo apt update && sudo apt upgrade`
 
 ### Install Chrome
 ```bash
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
 ```
 ### Install VPN clients
 ```bash
-mkdir /opt/OpenVPN/Windscribe_OpenVPN
+mkdir -p /opt/OpenVPN/Windscribe_OpenVPN
 ```
 Copy the `.ovpn` files and `auth-user-pass.txt` in this directory. Place the certs `ca.crt` and `ta.key` in a sub folder named `openvpn_cert`.
 
@@ -100,11 +102,10 @@ When needed to mount just run `sudo mount_cloud.sh`
 
 ### Remove unwanted packages 
 ```bash
-sudo apt-get remove --purge libreoffice*
-sudo apt-get purge thunderbird*
-sudo rm /usr/share/applications/ubuntu-amazon-default.desktop
+sudo apt remove --purge libreoffice*
+sudo apt purge thunderbird*
 ```
-### Customize my shell
+You can add [Ohmyzsh](https://github.com/ohmyzsh) too.
 
 ## Add or Remove packages
 In the next screen select and/or remove packages that are not needed:
