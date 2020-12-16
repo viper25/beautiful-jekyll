@@ -48,6 +48,12 @@ We now enter a terminal where we do the "customization" of our ISO. We are prese
 
  (It's best to save these actions as a script in a [gist](https://gist.github.com/)) in case you need to recreate the ISO.
 
+### Remove unwanted packages 
+```bash
+sudo apt remove --purge libreoffice*
+sudo apt purge thunderbird*
+```
+
 ### Install latest OS updates 
 `sudo apt update && sudo apt upgrade`
 
@@ -85,7 +91,7 @@ rm google-chrome-stable_current_amd64.deb
 ```bash
 mkdir -p /opt/OpenVPN/Windscribe_OpenVPN
 ```
-Copy the `.ovpn` files and `auth-user-pass.txt` in this directory. Place the certs `ca.crt` and `ta.key` in a sub folder named `openvpn_cert`.
+Copy the `.ovpn` files and `auth-user-pass.txt` in this directory. Place the certs `ca.crt` and `ta.key` in a sub folder named `openvpn_cert`. To copy files, you can drag and drop files into the terminal screen in Cubic.
 
 ### Install rclone
 A very useful tool when using Custom Linux ISOs is to use the [mount](https://rclone.org/commands/rclone_mount/) feature of rclone to mount cloud drives such as Google Drive, OneDrive, Box etc.
@@ -100,11 +106,6 @@ rclone mount box:linux_mount /mnt/cloudrive/box
 ```
 When needed to mount just run `sudo mount_cloud.sh`
 
-### Remove unwanted packages 
-```bash
-sudo apt remove --purge libreoffice*
-sudo apt purge thunderbird*
-```
 You can add [Ohmyzsh](https://github.com/ohmyzsh) too.
 
 ## Add or Remove packages
