@@ -91,7 +91,20 @@ rm google-chrome-stable_current_amd64.deb
 ```bash
 mkdir -p /opt/OpenVPN/Windscribe_OpenVPN
 ```
-Copy the `.ovpn` files and `auth-user-pass.txt` in this directory. Place the certs `ca.crt` and `ta.key` in a sub folder named `openvpn_cert`. To copy files, you can drag and drop files into the terminal screen in Cubic.
+Copy the `.ovpn` files and `auth-user-pass.txt` in this directory. The password is sought from the text file mentioned in the \*.ovpn files at this line. 
+
+```
+auth-user-pass auth-user-pass.txt
+```
+
+Place a file named `auth-user-pass.txt` in the same folder with the username and password on 2 lines:
+
+```
+username
+mypassword
+```
+
+Place the certs `ca.crt` and `ta.key` in a sub folder named `openvpn_cert`. To copy files, you can drag and drop files into the terminal screen in Cubic.
 
 ### Install rclone
 A very useful tool when using Custom Linux ISOs is to use the [mount](https://rclone.org/commands/rclone_mount/) feature of rclone to mount cloud drives such as Google Drive, OneDrive, Box etc.
